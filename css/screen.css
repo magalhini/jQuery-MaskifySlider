@@ -1,0 +1,47 @@
+.page {
+    margin: 6em auto 0;
+    width: 80%;
+}
+
+.widgets {
+    position: relative;
+}
+
+.circle {
+    width: 250px;
+    position: relative;
+    height: 250px;
+    -o-border-radius: 175px;
+    border-radius: 175px;
+    background: #000;
+    float: left;
+    margin: 0 0 0 2em;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px #000;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+    -o-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+.circle img {
+    -webkit-transition: opacity 1s ease-in 0s;
+    -moz-transition: opacity 1s ease-in 0s;
+    -o-transition: opacity 1s ease-in 0s;
+    transition: opacity 1s ease-in 0s;
+}
+
+.fadeOut {
+    -webkit-animation: fadeOut 1s 1 forwards;
+    -moz-animation: fadeOut 1s 1 forwards;
+    -o-animation: fadeOut 1s 1 forwards;
+    animation: fadeOut 1s 1 forwards;
+}
+
+.showUp {
+    -webkit-animation: showUp 1s 1 forwards;
+    -moz-animation: showUp 1s 1 forwards;
+    -o-animation: fadeOut 1s 1 forwards;
+    animation: showUp 1s 1 forwards;
+}
+
+.sources {display:none;}

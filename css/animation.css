@@ -1,0 +1,29 @@
+@-moz-keyframes showUp {
+    0% {   opacity: 0;}
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes showUp {
+    0% {   opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-o-keyframes showUp {
+    0% {   opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeOut {
+    0% {   opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {   opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@-o-keyframes fadeOut {
+    0% {   opacity: 1; }
+    100% { opacity: 0; }
+}
