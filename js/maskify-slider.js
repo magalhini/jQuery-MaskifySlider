@@ -1,12 +1,13 @@
 (function ($) {
-
     $.fn.Maskify = function (settings) {
 
         var options = $.extend({
-            'canvas' : '',
+            'canvas' : [],
             'marginTop' : 0,
             'slider' : true,
-            'delay' : 5000
+            'delay' : 5000,
+            'transitionLength' : 1000,
+            'cssTransition' : true
         }, settings);
 
         return this.each(function () {
@@ -19,7 +20,6 @@
                 itemWidth   = 0,
                 itemHeight  = 0,
                 index       = 0,
-                isWebkit    = $.browser.webkit ? true : false,
                 autoSlider  = options.slider ? createAutoslide(options.delay) : null;
 
             createImages();
@@ -45,7 +45,7 @@
 
                     itemLength += 1;
                 });
-
+                sources.css('display', 'none'); // hide the passed images sources
                 setPositions();
             }
 
@@ -68,7 +68,7 @@
 
                     $this.css({
                         'margin-left': (- itemWidth * itemLength / itemLength * i)  - margins + 'px',
-                        'margin-top' : options.marginTop ? -options.marginTop + '%' : 0
+                        'margin-top' : options.marginTop ? -options.marginTop + 'px' : 0
                     });
                 });
 
@@ -91,28 +91,29 @@
             function setImage(newIndex) {
                 var imgsClone = galleryImgs.slice(0);
 
+                /* Create a self-invoking fn that grabs every image element.
+                If the transition is CSS only, add a second timer to wait for the element to fade out (therefore not needing to listen to transitionEnd events). */
+
                 (function walk(img) {
-                    img.fadeOut(function () {
+                    if (options.cssTransition === true) {
                         setTimeout(function () {
-                            img.attr('src', sources.eq(newIndex).attr('src')).fadeIn();
-                            if (imgsClone.length) {
-                                walk(imgsClone.shift());
-                            }
-                        }, 100);
-                    });
+                            img.removeClass('showUp').addClass('fadeOut');
+                            setTimeout(function () {
+                                img.attr('src', sources.eq(newIndex).attr('src'));
+                                img.addClass('showUp');
+                            }, options.transitionLength);
+                            if (imgsClone.length) walk(imgsClone.shift());
+                        }, 250);
+                    } else {
+                        img.fadeOut(function () {
+                            setTimeout(function () {
+                                img.attr('src', sources.eq(newIndex).attr('src')).fadeIn();
+                                if (imgsClone.length) walk(imgsClone.shift());
+                            }, 250);
+                        });
+                    }
                 }(imgsClone.shift()));
-
-                /*
-                $.each(galleryImgs, function (i, img) {
-                    img.fadeOut(function () {
-                        img.attr('src', sources.eq(newIndex).attr('src')).fadeIn();
-                    });
-                }); */
             }
-
-            /* For debugging */
-            window.next = next;
-            window.previous = previous;
         });
     };
 })(jQuery);
