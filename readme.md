@@ -1,4 +1,4 @@
-#Maskify Slider 0.1a
+#Maskify Slider 0.2a
 ##a jQuery plugin
 
 ### Warning
@@ -44,6 +44,8 @@ And then call:
     });
 ```
 
+The gallery images, the ones to display, can be anywhere inside your parent selector (see example above).
+
 ### CSS or JS?
 
 The plugin supports both ways of transitions: CSS3 and JS.
@@ -53,5 +55,5 @@ By default it will use CSS3, so make sure to include the keyframes animations pr
 
 This plugin is still in development. There is a known issue when using border-radius on the placeholder/canvas elements in Webkit and Opera, which don't deal very well when overflowing img tags as their children.
 
-In webkit, you can prevent this issue by using the -webkit-mask property, which will hide the overflow images but will hide any borders, box-shadows, outlines, etc, in your elements. 
+In webkit, you can prevent this issue by using the -webkit-mask property, which will hide the overflow images but will hide any borders, box-shadows, outlines, etc, in your elements.
 In Opera I still couldn't find a way to make this work. If you need to use this in Opera, it's better to turn off the slider at this point.
