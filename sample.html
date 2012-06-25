@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta http-equiv="cleartype" content="on">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -21,12 +21,16 @@
 
     <body>
         <div class="page">
-    	<h1>Maskify Slider 0.1: a jQuery plugin</h1>
-    	<h2>by Ricardo Magalh„es</h2>
-    	<h3><a href="https://github.com/magalhini/jQuery-MaskifySlider">View on Github</a></h3>
-	
-		<div class="widgets-square">
-		<h1>With margin between elements</h1>
+        <h1>Maskify Slider 0.2: a jQuery plugin</h1>
+        <h2>by Ricardo Magalh√£es</h2>
+        <h3><a href="https://github.com/magalhini/jQuery-MaskifySlider">View on Github</a></h3>
+
+        <h3>What is it?</h3>
+        <p class="description">MaskifySlider is an extremely simple plugin which enables you to create an image slider with the effect of an image mask. The plugin will automically offset the images position according to the spacing between their placeholders, giving the impression that it's only one masked image.</p>
+        <div class="description">If you don't specify any margin, the placeholders will be close together, creating the effect of a gallery grid. I dig that.</div>
+
+        <div class="widgets-square">
+        <h1>With margin between elements</h1>
             <div class="sources">
                 <img src="img.jpg" alt="">
                 <img src="img2.jpg" alt="">
@@ -37,9 +41,9 @@
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-	
-		<div class="widgets-no-margin">
-		<h1>No margin only creates a virtual grid</h1>
+
+        <div class="widgets-no-margin">
+        <h1>No margin only creates a virtual grid</h1>
             <div class="sources">
                 <img src="img.jpg" alt="">
                 <img src="img2.jpg" alt="">
@@ -49,12 +53,12 @@
             <div class="circle"></div>
             <div class="circle"></div>
             <div class="circle"></div>
-			<div class="circle"></div>
-			<div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
         </div>
-		
+
         <div class="widgets">
-		<h1>Border-radius has a few problems with overflow on img. Use wisely!</h1>
+        <h1>Border-radius has a few problems with overflow on img. Use wisely!</h1>
             <div class="sources">
                 <img src="img.jpg" alt="">
                 <img src="img2.jpg" alt="">
@@ -80,8 +84,8 @@
                 'transitionLength': 1000,  // duration of the transition
                 'cssTransition' : true   // prefer CSS transitions. false means JS.
             });
-			
-			$('.widgets-square').Maskify({
+
+            $('.widgets-square').Maskify({
                 'canvas': '.circle',       // elements in which to show the img
                 'marginTop': 200,          // px to offset images from the top
                 'slider': true,            // slide the images
@@ -89,8 +93,8 @@
                 'transitionLength': 1000,  // duration of the transition
                 'cssTransition' : true   // prefer CSS transitions. false means JS.
             });
-			
-			$('.widgets-no-margin').Maskify({
+
+            $('.widgets-no-margin').Maskify({
                 'canvas': '.circle',       // elements in which to show the img
                 'marginTop': 100,          // px to offset images from the top
                 'slider': true,            // slide the images

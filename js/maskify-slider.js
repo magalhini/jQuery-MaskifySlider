@@ -10,6 +10,18 @@
             'cssTransition' : true
         }, settings);
 
+        function findTransition(el) {
+            var properties = [ 'transition', 'WebkitTransition', 'msTransition', 'MozTransition', 'OTransition' ],
+                prop;
+
+            while (properties.length) {
+                prop = properties.shift();
+                if (el[0].style[prop] != undefined) {
+                    return prop;
+                }
+            }
+        }
+
         return this.each(function () {
 
             var elem        = $(this),
@@ -45,6 +57,7 @@
 
                     itemLength += 1;
                 });
+
                 sources.css('display', 'none'); // hide the passed images sources
                 setPositions();
             }
@@ -59,20 +72,25 @@
             function setPositions() {
                 getImageSizes(items);
 
-                var margins = 0;
+                var margins = 0,
+                    isJsTransition = options.cssTransition ? false : true,
+                    animationProp = isJsTransition ? findTransition(galleryImgs[0]) : null;
+                    // If using JS to animate, remove all css3 transition properties. The above gets the proper -vendor to detect the transition property.
 
                 $.each(galleryImgs, function (i, obj) {
                     var $this = obj;
 
                     margins += i !== 0 ? parseInt($this.css('margin-left') + $this.css('margin-right'), 10) : 0;
 
+                    if (isJsTransition) $this.get(0).style[animationProp] = 'none'; // Remove transition properties, we're using JS.
+
                     $this.css({
                         'margin-left': (- itemWidth * itemLength / itemLength * i)  - margins + 'px',
-                        'margin-top' : options.marginTop ? -options.marginTop + 'px' : 0
+                        'margin-top' : options.marginTop ? -options.marginTop + 'px' : 0,
                     });
                 });
 
-                setImage(index);
+                setImage(index); // Set current gallery position
             }
 
             /* Next image */
@@ -96,6 +114,7 @@
 
                 (function walk(img) {
                     if (options.cssTransition === true) {
+                        // animate via CSS (requires .fadeOut and .showUp classes in the .css file)
                         setTimeout(function () {
                             img.removeClass('showUp').addClass('fadeOut');
                             setTimeout(function () {
@@ -105,6 +124,7 @@
                             if (imgsClone.length) walk(imgsClone.shift());
                         }, 250);
                     } else {
+                        // or, we animate via javascript.
                         img.fadeOut(function () {
                             setTimeout(function () {
                                 img.attr('src', sources.eq(newIndex).attr('src')).fadeIn();

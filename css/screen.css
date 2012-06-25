@@ -1,6 +1,25 @@
 .page {
     margin: 6em auto 0;
     width: 80%;
+    min-width: 980px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #27B8DF;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 400;
+    letter-spacing: -.2px;
+}
+
+h2 {
+    font-style: italic;
+    font-weight: 200;
+    margin-top: -.7em;
+    font-family: Georgia, serif;
 }
 
 .widgets {
@@ -45,7 +64,6 @@
     margin: 0 0 0 2em;
     background-repeat: no-repeat;
     overflow: hidden;
-    box-shadow: 0 0 0 3px #000;
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
     -o-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 }
