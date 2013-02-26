@@ -1,4 +1,4 @@
-#Maskify Slider 0.2a
+#Maskify Slider 0.3a
 ##a jQuery plugin
 
 ### Warning
@@ -61,3 +61,9 @@ In Opera I still couldn't find a way to make this work. If you need to use this 
 
 Please note that the 'percentage' option is still a work in progress; it will only work if you're using the grid effect, ie, without margins, as the percentage values still don't account for those.
 Will fix this soon.
+
+### Change log
+0.3a (2013-02-26)
+
+- Account for percentage-based widths.
+- Minor improvements.
