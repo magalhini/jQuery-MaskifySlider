@@ -36,11 +36,12 @@ And then call:
 ```javascript
     $('.widgets').Maskify({
         'canvas': '.circle',       // elements in which to show the img
-        'marginTop': 200,          // px to offset images from the top
-        'slider': true,            // slide the images
-        'delay': 7000,             // image transition delay
-        'transitionLength': 1000,  // duration of the transition
-        'cssTransition' : true   // prefer CSS transitions. false means JS.
+        'marginTop': 200,          // px to offset images from the top (default: 0)
+        'slider': true,            // slide the images (default: true)
+        'delay': 7000,             // image transition delay (default: 5000)
+        'transitionLength': 1000,  // duration of the transition (default: 1000)
+        'cssTransition' : true,    // prefer CSS transitions. false means JS. (default: true)
+        'percentage': true         // use if your containers use % width (default: false)
     });
 ```
 
@@ -57,3 +58,6 @@ This plugin is still in development. There is a known issue when using border-ra
 
 In webkit, you can prevent this issue by using the -webkit-mask property, which will hide the overflow images but will hide any borders, box-shadows, outlines, etc, in your elements.
 In Opera I still couldn't find a way to make this work. If you need to use this in Opera, it's better to turn off the slider at this point.
+
+Please note that the 'percentage' option is still a work in progress; it will only work if you're using the grid effect, ie, without margins, as the percentage values still don't account for those.
+Will fix this soon.

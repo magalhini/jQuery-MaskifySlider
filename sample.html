@@ -42,6 +42,7 @@
             <div class="circle"></div>
         </div>
 
+
         <div class="widgets-no-margin">
         <h1>No margin only creates a virtual grid</h1>
             <div class="sources">
@@ -76,6 +77,7 @@
 
     <script type="text/javascript">
         $(function () {
+
             $('.widgets').Maskify({
                 'canvas': '.circle',       // elements in which to show the img
                 'marginTop': 200,          // px to offset images from the top
@@ -87,11 +89,11 @@
 
             $('.widgets-square').Maskify({
                 'canvas': '.circle',       // elements in which to show the img
-                'marginTop': 200,          // px to offset images from the top
+                'marginTop': 80,          // px to offset images from the top
                 'slider': true,            // slide the images
                 'delay': 7000,             // image transition delay
                 'transitionLength': 1000,  // duration of the transition
-                'cssTransition' : true   // prefer CSS transitions. false means JS.
+                'cssTransition' : true,  // prefer CSS transitions. false means JS.
             });
 
             $('.widgets-no-margin').Maskify({
@@ -100,7 +102,8 @@
                 'slider': true,            // slide the images
                 'delay': 4000,             // image transition delay
                 'transitionLength': 500,  // duration of the transition
-                'cssTransition' : true   // prefer CSS transitions. false means JS.
+                'cssTransition' : true,
+                'percentage': true   // prefer CSS transitions. false means JS.
             });
         });
     </script>

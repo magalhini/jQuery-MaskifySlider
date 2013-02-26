@@ -7,9 +7,11 @@
             'slider' : true,
             'delay' : 5000,
             'transitionLength' : 1000,
-            'cssTransition' : true
+            'cssTransition' : true,
+            'percentage' : false
         }, settings);
 
+        /* For CSS transitions, find which browser we're using */
         function findTransition(el) {
             var properties = [ 'transition', 'WebkitTransition', 'msTransition', 'MozTransition', 'OTransition' ],
                 prop;
@@ -29,9 +31,8 @@
                 sources     = elem.find('img'),
                 galleryImgs = [],
                 itemLength  = 0,
-                itemWidth   = 0,
-                itemHeight  = 0,
                 index       = 0,
+                unit        = options.percentage ? '%' : 'px',
                 autoSlider  = options.slider ? createAutoslide(options.delay) : null;
 
             createImages();
@@ -64,15 +65,21 @@
 
             /* Get width and height of our canvas elements */
             function getImageSizes(items) {
-                itemWidth = items.eq(0).width();
-                itemHeight = items.eq(0).height();
+                var itemWidth = items.eq(0).width(),
+                    itemHeight = items.eq(0).height();
+
+                return {
+                    width: itemWidth,
+                    height: itemHeight
+                };
             }
 
             /* Calculate position and offsets to give the masked effect */
             function setPositions() {
-                getImageSizes(items);
+                var sizes = getImageSizes(items);
 
                 var margins = 0,
+                    offsetLeft = 0,
                     isJsTransition = options.cssTransition ? false : true,
                     animationProp = isJsTransition ? findTransition(galleryImgs[0]) : null;
                     // If using JS to animate, remove all css3 transition properties. The above gets the proper -vendor to detect the transition property.
@@ -82,11 +89,22 @@
 
                     margins += i !== 0 ? parseInt($this.css('margin-left') + $this.css('margin-right'), 10) : 0;
 
-                    if (isJsTransition) $this.get(0).style[animationProp] = 'none'; // Remove transition properties, we're using JS.
+                    // Remove transition properties if we're using JS.
+                    if (isJsTransition) {
+                        $this.get(0).style[animationProp] = 'none';
+                    }
+
+                    // As of now, percentage widths only work with elements without margin :(
+                    // Will try to fix it soon!
+                    if (!options.percentage) {
+                        offsetLeft = (- sizes.width * itemLength / itemLength * i)  - margins + unit;
+                    } else {
+                        offsetLeft = (-100 * i) + '%';
+                    }
 
                     $this.css({
-                        'margin-left': (- itemWidth * itemLength / itemLength * i)  - margins + 'px',
-                        'margin-top' : options.marginTop ? -options.marginTop + 'px' : 0,
+                        'margin-left': offsetLeft,
+                        'margin-top' : options.marginTop ? -options.marginTop + unit : 0
                     });
                 });
 

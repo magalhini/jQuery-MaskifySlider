@@ -1,7 +1,7 @@
 .page {
     margin: 6em auto 0;
     width: 80%;
-    min-width: 980px;
+    /*min-width: 980px;*/
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -43,7 +43,7 @@ h2 {
 .widgets-no-margin .circle {
     margin: 0;
     border-radius: 0;
-    width: 15%;
+    width: 20%;
     height: 160px;
 }
 
